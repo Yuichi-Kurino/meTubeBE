@@ -1,5 +1,11 @@
 
-const pg = require('pg');
+//const pg = require('pg');
+
+const pg = require('knex')({
+  client: 'pg',
+  connection: process.env.PG_CONNECTION_STRING,
+  searchPath: ['knex', 'public'],
+});
 require('dotenv').config();
 
 const localSQLConnection = {
