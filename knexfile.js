@@ -1,11 +1,7 @@
 
 //const pg = require('pg');
 
-const pg = require('knex')({
-  client: 'pg',
-  connection: process.env.PG_CONNECTION_STRING,
-  searchPath: ['knex', 'public'],
-});
+
 require('dotenv').config();
 
 const localSQLConnection = {
@@ -16,16 +12,13 @@ const localSQLConnection = {
   database: process.env.DATABASE_DATA,
 };
 
-
-// Production database connection
 const SQLConnection = localSQLConnection;
 
 module.exports = {
 
   development: {
     client: 'pg',
-    version: '5.7',
-    connection: SQLConnection,
+    connection: process.env.DATABASE_URL,
     migrations: {
       directory: './database/migrations',
       tablename: 'knex_migrations',
@@ -34,6 +27,7 @@ module.exports = {
       directory: './database/seeds',
     },
     useNullAsDefault: true,
+    ssl: true,
   },
 
   staging: {

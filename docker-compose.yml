@@ -7,3 +7,14 @@ services:
     build: .
     ports:
       - '3000:3000'
+  db:
+    image: postgres
+    environment:
+      POSTGRES_HOST: ec2-54-144-177-189.compute-1.amazonaws.com
+      POSTGRES_USER: mpqtzipgjvfxfa
+      POSTGRES_PASSWORD: 6af12f1887721a8755c13744d0e6eccbf69a6f7b3095d6a6fb358053a4dbe35b
+      POSTGRES_DB: d6kfnka99ar787
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"

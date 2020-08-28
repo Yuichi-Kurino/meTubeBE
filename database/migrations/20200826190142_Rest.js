@@ -4,6 +4,7 @@ exports.up = function(knex) {
         tbl.increments('rid').unique().notNullable();
         tbl.text('name').notNullable();
         tbl.text('location').notNullable();
+        tbl.text('password').nullable();
 
     })
 };
