@@ -32,7 +32,7 @@ module.exports = {
 
   staging: {
     client: 'pg',
-    connection: SQLConnection,
+    connection: process.env.DATABASE_URL,
     migrations: {
       directory: './database/migrations',
       tablename: 'knex_migrations',
